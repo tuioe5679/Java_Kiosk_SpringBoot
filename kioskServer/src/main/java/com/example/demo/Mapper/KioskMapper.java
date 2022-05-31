@@ -32,7 +32,7 @@ public interface KioskMapper {
 	int putProduct(@Param("id") String id,@Param("name") String name,@Param("price") String price,@Param("image") String image);
 	
 	@Delete("delete from product where id=#{id}")
-	int deleteProduct(@Param("id") String id);
+	int deleteProduct(@Param("ids") String id);
 	
 	//주문정보 
 	@Select("select * from orders")
