@@ -2,6 +2,10 @@ package com.example.demo.model;
 
 public class KioskProduct {
 	
+	@Override
+	public String toString() {
+		return "KioskProduct [id=" + id + ", name=" + name + ", price=" + price + ", image=" + image + "]";
+	}
 	private String id;
 	private String name;
 	private String price;

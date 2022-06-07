@@ -5,7 +5,8 @@ import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.Mapper.KioskMapper;
@@ -23,7 +24,7 @@ public class KioskController {
 		this.mapper = mapper;
 	}
 	
-	@GetMapping("/member/{id},{pwd}")
+	@GetMapping("/members/{id},{pwd}")
 	public KioskMembers getmembers(@PathVariable("id") String id, @PathVariable("pwd") String pwd) {
 		return mapper.getMembers(id,pwd);
 	}
@@ -38,32 +39,32 @@ public class KioskController {
 		return mapper.getOrders();
 	}
 	
-	@PutMapping("/product/{id}")
-	public void putProduct(@PathVariable("id") String id,@RequestParam("name") String name,@RequestParam("price") String price,@RequestParam("image") String image) {
-		mapper.putProduct(id, name, price, image);
+	@PostMapping("/product/post")
+	public int putProduct(@RequestBody KioskProduct kioskproduct) {
+		return mapper.postProduct(kioskproduct);
 	}
 	
-	@PutMapping("/orders/{ordernum}")
-	public void putOrders(@PathVariable("ordernum") String ordernum,@RequestParam("name") String name,@RequestParam("price") String price,@RequestParam("count") String count) {
-		mapper.putOrders(ordernum, name, price, count);
+	@PostMapping("/orders/post")
+	public int putOrders(@RequestBody KioskOrders kioskorders) {
+		return mapper.postOrders(kioskorders);
 	}
 	
-	@PutMapping("/member/{id}")
-	public void putmember(@PathVariable("id") String id,@RequestParam("pwd") String pwd,@RequestParam("name") String name,@RequestParam("totalmoney") String totalmoney) {
-		mapper.putmember(id, pwd, name, totalmoney);
+	@PostMapping("/members/post")
+	public int putmember(@RequestBody KioskMembers kioskmembers) {
+		return mapper.postmember(kioskmembers);
 	}
 	
-	@DeleteMapping("/member/{id}")
+	@DeleteMapping("/members/delete/{id}")
 	public void deleteMember(@PathVariable("id") String id) {
 		mapper.deleteMember(id);
 	}
 	
-	@DeleteMapping("/product/{id}")
+	@DeleteMapping("/product/delete/{id}")
 	public void deleteProduct(@PathVariable("id") String id) {
 		mapper.deleteProduct(id);
 	}
 	
-	@DeleteMapping("/orders/{ordernum}")
+	@DeleteMapping("/orders/delete/{ordernum}")
 	public void deleteOrder(@PathVariable("ordernum") String ordernum) {
 		mapper.delectOrders(ordernum);
 	}
