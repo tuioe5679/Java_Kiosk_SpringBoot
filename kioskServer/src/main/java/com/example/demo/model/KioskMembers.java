@@ -2,17 +2,27 @@ package com.example.demo.model;
 
 public class KioskMembers {
 	
+	private String idx;
 	private String id;
 	private String pwd;
 	private String name;
 	private String totalmoney;
 	
-	public KioskMembers(String id, String pwd, String name, String totalmoney) {
+	public KioskMembers(String idx,String id, String pwd, String name, String totalmoney) {
 		super();
+		this.idx = idx;
 		this.id = id;
 		this.pwd = pwd;
 		this.name = name;
 		this.totalmoney = totalmoney;
+	}
+	
+	public String getIdx() {
+		return idx;
+	}
+	
+	public void setIdx(String idx) {
+		this.idx = idx;
 	}
 	
 	public String getId() {

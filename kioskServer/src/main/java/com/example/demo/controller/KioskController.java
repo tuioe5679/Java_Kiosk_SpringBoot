@@ -25,7 +25,7 @@ public class KioskController {
 	}
 	
 	@GetMapping("/members/{id},{pwd}")
-	public KioskMembers getmembers(@PathVariable("id") String id, @PathVariable("pwd") String pwd) {
+	public List<KioskMembers> getmembers(@PathVariable("id") String id, @PathVariable("pwd") String pwd) {
 		return mapper.getMembers(id,pwd);
 	}
 	

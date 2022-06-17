@@ -14,9 +14,9 @@ import com.example.demo.model.KioskProduct;
 public interface KioskMapper {
 	//유저정보
 	@Select("select * from members where id=#{id} and pwd=#{pwd}")
-	KioskMembers getMembers(@Param("id") String id,@Param("pwd") String pwd);
+	List<KioskMembers> getMembers(@Param("id") String id,@Param("pwd") String pwd);
 	
-	@Insert("insert into members values(#{kioskmembers.id},#{kioskmembers.pwd},#{kioskmembers.name},#{kioskmembers.totalmoney})")
+	@Insert("insert into members (id,pwd,name,totalmoney) values(#{kioskmembers.id},#{kioskmembers.pwd},#{kioskmembers.name},#{kioskmembers.totalmoney})")
 	int postmember(@Param("kioskmembers") KioskMembers kioskmembers);
 	
 	@Delete("delete from members where id=#{id}")
