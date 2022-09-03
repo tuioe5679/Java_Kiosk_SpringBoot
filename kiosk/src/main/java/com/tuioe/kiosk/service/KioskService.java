@@ -5,14 +5,17 @@ import com.tuioe.kiosk.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class KioskService {
 
     private final ProductRepository productRepository;
 
-    public void createProduct(Product product){
-        productRepository.save(product);
+    public List<Product> findAllProduct(){
+        List<Product> productList =  productRepository.findAll();
+        return productList;
     }
 
 }

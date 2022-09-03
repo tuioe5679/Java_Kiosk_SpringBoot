@@ -10,14 +10,13 @@ import javax.persistence.*;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
-    @Column(nullable = false,length = 40)
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = false)
-    private int price;
+    private String price;
 
     @Column(nullable = false)
     private String image;
